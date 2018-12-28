@@ -60,6 +60,31 @@
 						<button class="btn btn-dark text-white btn-block calc">
 							Calculate
 						</button>
+
+						<div id="calculating" class="d-none">
+							<h2 class="calculating-text text-center mt-3">Calculating...</h2>
+							<img src="img/loading.gif" class="d-block mx-auto" alt="" />
+						</div>
+						<div class="results d-none">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend monthly-payment">
+									<span class="input-group-text">Monthly Payment</span>
+								</div>
+								<input class="form-control" type="number" />
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend total-payment">
+									<span class="input-group-text">Total Payment</span>
+								</div>
+								<input class="form-control" type="number" />
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend total-interest">
+									<span class="input-group-text">Total Interest</span>
+								</div>
+								<input class="form-control" type="number" />
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="col-3"></div>
