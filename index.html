@@ -26,7 +26,7 @@
 		<div class="container ">
 			<div class="row">
 				<div class="col-3"></div>
-				<div class="card bg-light col-6 mt-4">
+				<div class="card bg-white col-6 mt-4">
 					<div class="card-body">
 						<h1 class="card-title text-center">Loan Calculator</h1>
 
@@ -57,7 +57,7 @@
 								placeholder="Years to Repay"
 							/>
 						</div>
-						<button class="btn btn-dark text-white btn-block calc">
+						<button class="btn btn-dark text-white btn-block calc mb-3">
 							Calculate
 						</button>
 
@@ -65,24 +65,32 @@
 							<h2 class="calculating-text text-center mt-3">Calculating...</h2>
 							<img src="img/loading.gif" class="d-block mx-auto" alt="" />
 						</div>
-						<div class="results d-none">
+						<div class="results d-block">
 							<div class="input-group mb-3">
-								<div class="input-group-prepend monthly-payment">
+								<div class="input-group-prepend ">
 									<span class="input-group-text">Monthly Payment</span>
 								</div>
-								<input class="form-control" type="number" />
+								<input
+									class="form-control disabled monthly-payment"
+									type="number"
+								/>
 							</div>
 							<div class="input-group mb-3">
-								<div class="input-group-prepend total-payment">
+								<div class="input-group-prepend ">
 									<span class="input-group-text">Total Payment</span>
 								</div>
-								<input class="form-control" type="number" />
+								<input
+									class="form-control total-payment disabled"
+									type="number"
+								/>
 							</div>
 							<div class="input-group mb-3">
-								<div class="input-group-prepend total-interest">
-									<span class="input-group-text">Total Interest</span>
+								<div class="input-group-prepend ">
+									<span class="input-group-text total-interest"
+										>Total Interest</span
+									>
 								</div>
-								<input class="form-control" type="number" />
+								<input class="form-control disabled" type="number" />
 							</div>
 						</div>
 					</div>
