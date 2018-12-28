@@ -26,6 +26,9 @@ calcBtn.addEventListener("click", () => {
 			alert.setAttribute("class", "alert alert-danger d-none");
 		}, 2000);
 	} else {
+		//Reset results to disappear
+		results.setAttribute("class", "results d-none");
+
 		// Formula to calculate monthly payment
 		let p = loanAmount.value;
 
@@ -34,15 +37,18 @@ calcBtn.addEventListener("click", () => {
 		let n = years.value * 12;
 
 		let mp = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-		monthlyPayment.setAttribute("value", Math.round(mp));
+		monthlyPayment.setAttribute("value", Math.round(mp * 100) / 100);
 
 		// Formula to calculate total payment
-		totalPayment.setAttribute("value", Math.round(mp * years.value * 12));
+		totalPayment.setAttribute(
+			"value",
+			Math.round(mp * years.value * 12 * 100) / 100
+		);
 
 		// Formula to calculate total interest
 		totalInterest.setAttribute(
 			"value",
-			Math.round(totalPayment.value - loanAmount.value)
+			Math.round((totalPayment.value - loanAmount.value) * 100) / 100
 		);
 		// Show the loading icon for 2 seconds
 		loading();
