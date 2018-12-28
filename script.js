@@ -17,9 +17,9 @@ calcBtn.addEventListener("click", () => {
 		loanAmount.value == 0 ||
 		interest.value == 0 ||
 		years.value == 0 ||
-		loanAmount.value.isEmpty() ||
-		interest.value.isEmpty() ||
-		years.value.isEmpty()
+		loanAmount.value == "" ||
+		interest.value == "" ||
+		years.value == ""
 	) {
 		alert.setAttribute("class", "alert alert-danger d-block");
 		setTimeout(() => {
