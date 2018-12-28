@@ -8,31 +8,56 @@ const results = document.querySelector(".results");
 const monthlyPayment = document.querySelector(".monthly-payment");
 const totalPayment = document.querySelector(".total-payment");
 const totalInterest = document.querySelector(".total-interest");
+const alert = document.querySelector(".alert");
 
 // Calculating results
 calcBtn.addEventListener("click", () => {
-	// Formula to calculate monthly payment
-	let p = loanAmount.value;
-	console.log(p);
-	let r = interest.value / 100 / 12;
-	console.log(r);
-	let n = years.value * 12;
-	console.log(n);
-	let mp = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-	monthlyPayment.setAttribute("value", Math.round(mp));
-	console.log(mp);
+	//Show alert if one of the inputs is zero or empty then remove the alert after 2 seconds
+	if (
+		loanAmount.value == 0 ||
+		interest.value == 0 ||
+		years.value == 0 ||
+		loanAmount.value.isEmpty() ||
+		interest.value.isEmpty() ||
+		years.value.isEmpty()
+	) {
+		alert.setAttribute("class", "alert alert-danger d-block");
+		setTimeout(() => {
+			alert.setAttribute("class", "alert alert-danger d-none");
+		}, 2000);
+	} else {
+		// Formula to calculate monthly payment
+		let p = loanAmount.value;
 
-	// Formula to calculate total payment
-	totalPayment.setAttribute("value", Math.round(mp * years.value * 12));
+		let r = interest.value / 100 / 12;
 
-	// Formula to calculate total interest
-	totalInterest.setAttribute(
-		"value",
-		Math.round(totalPayment.value - loanAmount.value)
-	);
-	loading();
-	//Show the results
-	results.setAttribute("class", "results d-block");
+		let n = years.value * 12;
+
+		let mp = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+		monthlyPayment.setAttribute("value", Math.round(mp));
+
+		// Formula to calculate total payment
+		totalPayment.setAttribute("value", Math.round(mp * years.value * 12));
+
+		// Formula to calculate total interest
+		totalInterest.setAttribute(
+			"value",
+			Math.round(totalPayment.value - loanAmount.value)
+		);
+		// Show the loading icon for 2 seconds
+		loading();
+
+		//Show the results after 2 seconds
+		setTimeout(() => {
+			results.setAttribute("class", "results d-block");
+		}, 2000);
+	}
 });
 
-function loading() {}
+// Show the loading icon
+function loading() {
+	calculating.setAttribute("class", "d-block");
+	setTimeout(() => {
+		calculating.setAttribute("class", "d-none");
+	}, 2000);
+}
